@@ -21,27 +21,27 @@ public class DoctorRESTController {
 	@Autowired
 	DoctorService doctorService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(path="all",method = RequestMethod.GET)
 	public List<DoctorDTO> getAllDoctors() {
 		return doctorService.getAllDoctors();
 	}
 	
-	@RequestMapping(value="/{id}",method = RequestMethod.GET)
+	@RequestMapping(value="/getbyid/{id}",method = RequestMethod.GET)
 	public DoctorDTO getDoctorById(@PathVariable("id") Long id) {
 		return doctorService.getDoctor(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(path="/add_doc",method = RequestMethod.POST)
 	public DoctorDTO createDoctor(@RequestBody DoctorDTO doctor) {
 		return doctorService.saveDoctor(doctor);
 	}
 	
-	@RequestMapping(method = RequestMethod.PUT)
+	@RequestMapping(path="/updatedoc",method = RequestMethod.PUT)
 	public DoctorDTO updateDoctor(@RequestBody DoctorDTO doctor) {
 		return doctorService.updateDoctor(doctor);
 	}
 	
-	@RequestMapping(value="/{id}",method = RequestMethod.DELETE)
+	@RequestMapping(value="/deldoc/{id}",method = RequestMethod.DELETE)
 	public void deleteDoctor(@PathVariable("id") Long id)
 	{
 		doctorService.deleteDoctorById(id);
