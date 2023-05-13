@@ -8,6 +8,7 @@ import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import com.laith.doctors.entites.Doctor;
 import com.laith.doctors.entites.Hospital;
+import com.laith.doctors.entites.Image;
 
 @SpringBootApplication
 public class DoctorsApplication  implements CommandLineRunner{

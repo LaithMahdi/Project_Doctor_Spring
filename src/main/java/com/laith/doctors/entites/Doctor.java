@@ -1,11 +1,14 @@
 package com.laith.doctors.entites;
 
 import java.util.Date;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Doctor {
@@ -19,6 +22,12 @@ public class Doctor {
 	
 	@ManyToOne
 	private Hospital hospital;
+	
+	
+	@OneToMany (mappedBy = "doctor")
+	private List<Image> images;
+
+	private String imagePath;
 
 	public Doctor() {
 		super();
@@ -65,6 +74,8 @@ public class Doctor {
 		this.serviceDoctor = serviceDoctor;
 	}
 
+	
+
 	public Date getDateDoctor() {
 		return dateDoctor;
 	}
@@ -79,6 +90,24 @@ public class Doctor {
 
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
+	}
+	
+	
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 
 	@Override

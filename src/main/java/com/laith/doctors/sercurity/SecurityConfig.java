@@ -40,12 +40,16 @@ public class SecurityConfig {
 		 }
 		 }).and()
 
+	 //.authorizeHttpRequests().anyRequest().permitAll();
 	 .authorizeHttpRequests()
 	 .requestMatchers("/api/all/**").hasAnyAuthority("ADMIN","USER")
 	 .requestMatchers(HttpMethod.GET,"/api/getbyid/**").hasAnyAuthority("ADMIN","USER")
 	 .requestMatchers(HttpMethod.POST,"/api/add_doc/**").hasAnyAuthority("ADMIN")
 	 .requestMatchers(HttpMethod.PUT,"/api/updatedoc/**").hasAuthority("ADMIN")
 	 .requestMatchers(HttpMethod.DELETE,"/api/deldoc/**").hasAuthority("ADMIN")
+	.requestMatchers(HttpMethod.GET,"/api/image/loadfromFS/**").hasAnyAuthority("ADMIN","USER")
+	 .requestMatchers(HttpMethod.GET,"/api/image/load/**").hasAnyAuthority("ADMIN","USER")
+	 .requestMatchers(HttpMethod.POST,"/api/image/uploadFS/**").hasAuthority("ADMIN")
 	 .anyRequest().authenticated().and()
 	 .addFilterBefore(new JWTAuthorizationFilter(),BasicAuthenticationFilter.class);
 	return http.build();
