@@ -38,18 +38,16 @@ public class DoctorServiceImpl implements DoctorService {
 	 */
 	@Override
 	public DoctorDTO updateDoctor(DoctorDTO doctor) {
-		return doctor;
-		/*
-		 * Long
-		 * oldDocImageId=this.getDoctor(doctor.getIdDoctor()).getImage().getIdImage();
-		 * Long newDocImageId=doctor.getImage().getIdImage(); DoctorDTO
-		 * docUpdated=convertEntityToDto(
-		 * doctorRepository.save(convertDtoToEntity(doctor))); if (oldDocImageId !=
-		 * newDocImageId) imageRepository.deleteById(oldDocImageId); return docUpdated;
-		 */
+		
+		  /*Long oldDocImageId=this.getDoctor(doctor.getIdDoctor()).getImage().getIdImage();
+		  Long newDocImageId=doctor.getImage().getIdImage(); DoctorDTO
+		  docUpdated=convertEntityToDto(
+		  doctorRepository.save(convertDtoToEntity(doctor))); if (oldDocImageId !=
+		  newDocImageId) imageRepository.deleteById(oldDocImageId); */
+		  return doctor;
+		 
 
-	}
-
+	}	
 	@Override
 	public void deleteDoctor(Doctor doctor) {
 		doctorRepository.delete(doctor);
@@ -58,9 +56,8 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public void deleteDoctorById(Long id) {
 		DoctorDTO d = getDoctor(id);
-		// suuprimer l'image avant de supprimer le produit
 		try {
-			Files.delete(Paths.get(System.getProperty("user.home") + "/images/" + d.getImagePath()));
+			Files.delete(Paths.get(System.getProperty("user.home") + "/images/" ));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

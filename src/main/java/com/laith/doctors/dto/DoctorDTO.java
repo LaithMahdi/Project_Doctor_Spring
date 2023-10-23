@@ -1,7 +1,7 @@
 package com.laith.doctors.dto;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Date;
 
 import com.laith.doctors.entites.Hospital;
 import com.laith.doctors.entites.Image;
@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 
 @Data
@@ -25,5 +26,6 @@ public class DoctorDTO {
 	private Hospital hospital;
 	//private String nameHospital;
 	private List<Image> images;
-	private String imagePath;
+	//private String imagePath;
+	//private Image image;
 }

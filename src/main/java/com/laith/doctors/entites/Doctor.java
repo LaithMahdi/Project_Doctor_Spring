@@ -9,6 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 public class Doctor {
@@ -19,15 +23,20 @@ public class Doctor {
 	private int ageDoctor;
 	private String serviceDoctor;
 	private Date dateDoctor;
-	
+
 	@ManyToOne
 	private Hospital hospital;
-	
-	
-	@OneToMany (mappedBy = "doctor")
+
+	@OneToMany(mappedBy = "doctor")
 	private List<Image> images;
 
-	private String imagePath;
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
 
 	public Doctor() {
 		super();
@@ -74,8 +83,6 @@ public class Doctor {
 		this.serviceDoctor = serviceDoctor;
 	}
 
-	
-
 	public Date getDateDoctor() {
 		return dateDoctor;
 	}
@@ -83,7 +90,7 @@ public class Doctor {
 	public void setDateDoctor(Date dateDoctor) {
 		this.dateDoctor = dateDoctor;
 	}
-	
+
 	public Hospital getHospital() {
 		return hospital;
 	}
@@ -91,29 +98,12 @@ public class Doctor {
 	public void setHospital(Hospital hospital) {
 		this.hospital = hospital;
 	}
-	
-	
-
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
-	public String getImagePath() {
-		return imagePath;
-	}
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
-	}
 
 	@Override
 	public String toString() {
 		return "Doctor [idDoctor=" + idDoctor + ", nameDoctor=" + nameDoctor + ", ageDoctor=" + ageDoctor
-				+ ", serviceDoctor=" + serviceDoctor + ", dateDoctor=" + dateDoctor + "]";
+				+ ", serviceDoctor=" + serviceDoctor + ", dateDoctor=" + dateDoctor + ", hospital=" + hospital
+				+ ", images=" + images + "]";
 	}
-	
+
 }
